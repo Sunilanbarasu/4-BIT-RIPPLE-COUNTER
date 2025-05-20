@@ -22,19 +22,78 @@ In timing diagram Q0 is changing as soon as the negative edge of clock pulse is 
 
 ![image](https://github.com/naavaneetha/4-BIT-RIPPLE-COUNTER/assets/154305477/85e1958a-2fc1-49bb-9a9f-d58ccbf3663c)
 
-**Procedure**
 
-/* write all the steps invloved */
 
 **PROGRAM**
+```
+module ripple_counter(
+    input wire clk,        // Clock input
+    input wire reset,      // Asynchronous reset
+    output wire [3:0] q    // 4-bit output
+);
 
-/* Program for 4 Bit Ripple Counter and verify its truth table in quartus using Verilog programming.
+    wire clk1, clk2, clk3;
 
- Developed by: RegisterNumber:
-*/
+    // First flip-flop (LSB)
+    T_FF tff0 (
+        .clk(clk),
+        .reset(reset),
+        .q(q[0]),
+        .clk_out(clk1)
+    );
+
+    // Second flip-flop
+    T_FF tff1 (
+        .clk(clk1),
+        .reset(reset),
+        .q(q[1]),
+        .clk_out(clk2)
+    );
+
+    // Third flip-flop
+    T_FF tff2 (
+        .clk(clk2),
+        .reset(reset),
+        .q(q[2]),
+        .clk_out(clk3)
+    );
+
+    // Fourth flip-flop (MSB)
+    T_FF tff3 (
+        .clk(clk3),
+        .reset(reset),
+        .q(q[3]),
+        .clk_out()
+    );
+
+endmodule
+
+// Toggle Flip-Flop Module
+module T_FF (
+    input wire clk,
+    input wire reset,
+    output reg q,
+    output wire clk_out
+);
+    assign clk_out = q;  // Output to next stage
+
+    always @(negedge clk or posedge reset) begin
+        if (reset)
+            q <= 0;
+        else
+            q <= ~q;
+    end
+endmodule
+```
+
+ Developed by: RegisterNumber: 212224220113
 
 **RTL LOGIC FOR 4 Bit Ripple Counter**
+![ex12](https://github.com/user-attachments/assets/fa1d313d-52b8-4355-94fb-6b65d31b2e0a)
 
-**TIMING DIGRAMS FOR 4 Bit Ripple Counter**
+**TIMING ![exp12](https://github.com/user-attachments/assets/4d02bc60-66c3-4d0b-b09b-2995f0223299)
+DIGRAMS FOR 4 Bit Ripple Counter**
 
 **RESULTS**
+
+Thus the 4 Bit Ripple Counter using verilog is implemented and their functionality using their functional tables is validated.
