@@ -91,8 +91,9 @@ endmodule
 **RTL LOGIC FOR 4 Bit Ripple Counter**
 ![ex12](https://github.com/user-attachments/assets/fa1d313d-52b8-4355-94fb-6b65d31b2e0a)
 
-**TIMING ![exp12](https://github.com/user-attachments/assets/4d02bc60-66c3-4d0b-b09b-2995f0223299)
-DIGRAMS FOR 4 Bit Ripple Counter**
+**DIGRAMS FOR 4 Bit Ripple Counter**
+![image](https://github.com/user-attachments/assets/b3f38add-5241-4da2-9f47-da70f8e1cd3d)
+
 
 **RESULTS**
 
